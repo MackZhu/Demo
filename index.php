@@ -11,9 +11,9 @@ function autoLoadClass( $class ) {
 
 spl_autoload_register('autoLoadClass'); 
 
-$config = new common\config();
+$config = new common\Config();
 
-(new common\core($config))->run();
+(new common\Core($config->getConfig()))->run();
 
 
 

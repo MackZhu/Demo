@@ -1,7 +1,7 @@
 <?php
 namespace Common;
 {
-    class config
+    class Config
     {
         public function getConfig()
         {

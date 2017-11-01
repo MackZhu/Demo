@@ -1,7 +1,7 @@
 <?php
 namespace Common;
 {
-    class core
+    class Core
     {
         protected $_config = [];
         
@@ -69,4 +69,3 @@ namespace Common;
         }
     }
 }
-?>

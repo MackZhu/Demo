@@ -24,9 +24,9 @@ namespace Common;
         {
             if (isset($where)) {
                 $this->filter .= ' WHERE ';
-                $this->filter .= implode(' ', $where);　//将数组转换成字符串，并定义多个数组之间的分隔符
+                //将数组转换成字符串，并定义多个数组之间的分隔符
+                $this->filter .= implode(' ', $where);
             }
-
             return $this;
         }
 

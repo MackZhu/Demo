@@ -1,10 +1,12 @@
 <?php
 namespace Application\Models;
+use \Common\Model as extModel;
+
 {
     /**
      * 用户Model
      */
-    class ItemModel extends Model
+    class ItemModel extends extModel
     {
         /**
          * 自定义当前模型操作的数据库表名称，

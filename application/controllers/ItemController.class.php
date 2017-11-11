@@ -1,7 +1,9 @@
 <?php
 namespace Application\Controllers;
+use \Common\Controller as extController;
+
 {
-    class ItemController extends Controller
+    class ItemController extends extController
     {
         // 首页方法，测试框架自定义DB查询
         public function index()
@@ -9,9 +11,9 @@ namespace Application\Controllers;
             $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
             if ($keyword) {
-                $items = (new ItemModel())->search($keyword);
+                $items = (new \Application\Models\ItemModel())->search($keyword);
             } else {
-                $items = (new ItemModel)->selectAll();
+                $items = (new \Application\Models\ItemModel)->selectAll();
             }
 
             $this->assign('title', '全部条目');
@@ -24,7 +26,7 @@ namespace Application\Controllers;
         public function add()
         {
             $data['item_name'] = $_POST['value'];
-            $count = (new ItemModel)->add($data);
+            $count = (new \Application\Models\ItemModel)->add($data);
 
             $this->assign('title', '添加成功');
             $this->assign('count', $count);
@@ -37,7 +39,7 @@ namespace Application\Controllers;
             $item = array();
             $postUrl = '/item/add';
             if ($id) {
-                $item = (new ItemModel)->select($id);
+                $item = (new \Application\Models\ItemModel)->select($id);
                 $postUrl = '/item/update';
             }
 
@@ -51,7 +53,7 @@ namespace Application\Controllers;
         public function update()
         {
             $data = array('id' => $_POST['id'], 'item_name' => $_POST['value']);
-            $count = (new ItemModel)->update($data['id'], $data);
+            $count = (new \Application\Models\ItemModel)->update($data['id'], $data);
 
             $this->assign('title', '修改成功');
             $this->assign('count', $count);
@@ -61,7 +63,7 @@ namespace Application\Controllers;
         // 删除记录，测试框架DB记录删除（Delete）
         public function delete($id = null)
         {
-            $count = (new ItemModel)->delete($id);
+            $count = (new \Application\Models\ItemModel)->delete($id);
 
             $this->assign('title', '删除成功');
             $this->assign('count', $count);

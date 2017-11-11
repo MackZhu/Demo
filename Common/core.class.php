@@ -15,7 +15,7 @@ use Application\Controllers as ac;
         public function run()
         {
             //spl_autoload_register("Common\core::loadClass");
-            spl_autoload_register(array($this, 'loadClass'));
+            //spl_autoload_register(array($this, 'loadClass'));
             $this->removeMagicQuotes();
             $this->unregisterGlobals();
             $this->setDbConfig();
@@ -53,12 +53,11 @@ use Application\Controllers as ac;
             // 获取URL参数
             array_shift($urlArray);
             $param = $urlArray ? $urlArray : array();
-        }       
+        }
         
         // 判断控制器和操作是否存在
-        $controller = 'ac\\'.$controllerName . 'Controller';
-        $xx = new ac\ItemController();
-        
+        $controller = "\\Application\\Controllers\\".$controllerName . 'Controller';
+
         if (!class_exists($controller)) {
             exit($controller . '控制器不存在');
         }
@@ -116,8 +115,11 @@ use Application\Controllers as ac;
         // 自动加载控制器和模型类 
         public static function loadClass($class)
         {
-            echo "<br>".$class."<br>";
+            echo "<br>1".$class."<br>";
             $file = $class  . '.class.php';  
+
+            echo "<br>2".$file."<br>";
+            
             if (is_file($file))
             {  
                 echo "ok";

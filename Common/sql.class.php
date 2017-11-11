@@ -1,5 +1,6 @@
 <?php 
 namespace Common;
+use \PDO;
 {
     class Sql
     {
